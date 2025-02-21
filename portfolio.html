@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arem Satish Kumar Reddy - Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: #f5f5f5; /* Light gray background */
+      color: #333; /* Dark gray text */
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      max-width: 1200px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background: #222; /* Dark gray sidebar */
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+      padding-top: 20px;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar nav ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 15px;
+      display: block;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .sidebar nav ul li a:hover {
+      background: #444; /* Slightly lighter gray on hover */
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #222;
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1001;
+      border-radius: 5px;
+    }
+
+    /* Home Section */
+    #home {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #333;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #home h1 {
+      font-size: 3rem;
+      color: #222; /* Dark gray for the name */
+      font-weight: bold;
+      animation: slideUp 1.5s ease-in-out;
+    }
+
+    #home p {
+      font-size: 1.2rem;
+      color: #666; /* Medium gray for the tagline */
+      margin-top: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #home .social-links {
+      margin-top: 20px;
+    }
+
+    #home .social-links a {
+      text-decoration: none;
+      color: #222;
+      font-size: 1.2rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    #home .social-links a:hover {
+      color: #0077b5; /* LinkedIn blue */
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 0;
+      transform: translateX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #222; /* Dark gray for headings */
+      font-weight: bold;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* About Section */
+    #about p {
+      font-size: 1rem;
+      color: #666; /* Medium gray for descriptions */
+      line-height: 1.8;
+    }
+
+    /* Education Section */
+    #education {
+      background: #fff; /* White background for education section */
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    #education h3 {
+      font-size: 1.5rem;
+      color: #222; /* Dark gray for degree title */
+      margin-bottom: 10px;
+    }
+
+    #education p {
+      font-size: 1rem;
+      color: #666; /* Medium gray for details */
+      margin-bottom: 5px;
+    }
+
+    /* Certifications Section */
+    #certifications {
+      background: #fff; /* White background for certifications */
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    #certifications h3 {
+      font-size: 1.5rem;
+      color: #222; /* Dark gray for certification title */
+      margin-bottom: 10px;
+    }
+
+    #certifications ul {
+      list-style: disc;
+      padding-left: 20px;
+      color: #666; /* Medium gray for certification details */
+    }
+
+    /* Project Cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #222; /* Dark gray for project titles */
+      font-weight: bold;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: #666; /* Medium gray for descriptions */
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-item {
+      background: #e0e0e0; /* Light gray for skill items */
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      color: #333; /* Dark gray for skill names */
+      transition: background 0.3s ease;
+    }
+
+    .skill-item:hover {
+      background: #222; /* Dark gray on hover */
+      color: #fff;
+    }
+
+    /* Form Styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    form input,
+    form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: #222; /* Dark gray focus effect */
+      outline: none;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #222; /* Dark gray button */
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #444; /* Slightly lighter gray on hover */
+    }
+
+    /* Active Sidebar */
+    .sidebar.active {
+      left: 0;
+    }
+
+    main.active {
+      transform: translateX(250px);
+    }
+
+    /* Footer */
+    footer {
+      background: #222; /* Dark gray footer */
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Menu Button -->
+  <button class="menu-btn" id="menuBtn">&#9776;</button>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+          <!-- Profile Image -->
+          <img src="satish.jpeg" alt="Arem Satish Kumar Reddy" class="profile-image">
+      
+          <!-- Name Title with Hover Animation -->
+          <h1 class="name-title">AREM SATISH KUMAR REDDY</h1>
+      
+          <!-- Tagline -->
+          <p class="tagline">Full-Stack Developer | Java, Spring Boot, Angular</p>
+      
+          <!-- Social Links -->
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/arem-satish-kumar-reddy-321156238/" target="_blank" class="social-link">LinkedIn</a>
+            <a href="mailto:aremsatishkumarreddy@gmail.com" class="social-link">Email</a>
+            <a href="https://github.com/dashboard" target="_blank" class="social-link">GitHub</a>
+          </div>
+        </div>
+      </section>
+      
+      <style>
+        /* General Styles */
+        #home {
+          padding: 80px 20px;
+          text-align: center;
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          color: #333;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Profile Image Styling */
+        .profile-image {
+          width: 200px; /* Increased Width */
+          height: 200px; /* Increased Height */
+          border-radius: 50%; /* Circular Shape */
+          object-fit: cover; /* Ensures Image Fits Nicely */
+          margin-bottom: 20px; /* Space Between Image and Text */
+          border: 4px solid #fff; /* White Border */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle Shadow */
+          animation: fadeIn 2s ease-in-out, rotate 5s infinite ease-in-out; /* Fade-In and Rotate Animation */
+          transition: transform 0.3s ease; /* Smooth Transition for Hover */
+        }
+      
+        /* Hover Effect for Profile Image */
+        .profile-image:hover {
+          transform: scale(1.1) rotate(5deg); /* Slightly Enlarge and Rotate on Hover */
+        }
+      
+        /* Enhanced Name Title Styling */
+        .name-title {
+          font-family: 'Poppins', sans-serif; /* Modern Font */
+          font-size: 3.5rem; /* Larger Font Size */
+          font-weight: 700; /* Bold Weight */
+          color: #222; /* Dark Color */
+          letter-spacing: 2px; /* Spacing Between Letters */
+          margin-bottom: 10px;
+          position: relative; /* For Adding Decorative Elements */
+          transition: all 0.5s ease; /* Smooth Transition */
+          cursor: pointer; /* Pointer Cursor on Hover */
+          text-transform: uppercase; /* Convert to Uppercase */
+        }
+      
+        /* Hover Effect for Name Title */
+        .name-title:hover {
+          transform: scale(1.1); /* Slightly Enlarge */
+          letter-spacing: 4px; /* Increase Letter Spacing */
+        }
+      
+        /* Underline Effect for Name Title */
+        .name-title::after {
+          content: '';
+          display: block;
+          width: 120px;
+          height: 4px;
+          background-color: #ff6f61; /* Vibrant Color */
+          margin: 10px auto 0; /* Centered Below Title */
+          border-radius: 5px; /* Rounded Edges */
+          animation: underlineGrow 1s ease-in-out;
+        }
+      
+        /* Enhanced Tagline Styling */
+        .tagline {
+          font-family: 'Roboto', sans-serif; /* Clean Font */
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: #555; /* Slightly Lighter Color */
+          margin-bottom: 30px;
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Social Links Container */
+        .social-links {
+          display: flex;
+          justify-content: center;
+          gap: 20px; /* Space Between Links */
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Social Link Styling */
+        .social-link {
+          font-family: 'Poppins', sans-serif;
+          font-size: 1rem;
+          font-weight: 600;
+          color: #222; /* Dark Text Color */
+          text-decoration: none; /* Remove Default Underline */
+          transition: all 0.3s ease; /* Smooth Transition */
+          position: relative; /* For Adding Decorative Effects */
+        }
+      
+        /* Hover Effect for Social Links */
+        .social-link:hover {
+          transform: scale(1.1); /* Slightly Enlarge */
+          letter-spacing: 2px; /* Increase Letter Spacing */
+        }
+      
+        /* Underline Effect for Social Links */
+        .social-link::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 2px;
+          background-color: #222; /* Same as Text Color */
+          margin: 5px auto 0; /* Space Below Text */
+          transition: width 0.3s ease; /* Smooth Transition */
+        }
+      
+        .social-link:hover::after {
+          width: 100%; /* Full Underline on Hover */
+        }
+      
+        /* Animations */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      
+        @keyframes underlineGrow {
+          from {
+            width: 0;
+          }
+          to {
+            width: 120px;
+          }
+        }
+      
+        /* Rotate Animation for Profile Image */
+        @keyframes rotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          50% {
+            transform: rotate(5deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+      </style>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+          <!-- Enhanced About Me Title -->
+          <h2 class="about-title">About Me</h2>
+          <p>
+            I am a passionate <span class="highlight">Full-Stack Developer</span> specializing in 
+            <span class="highlight">Java</span>, <span class="highlight">Spring Boot</span>, and 
+            <span class="highlight">Angular</span>. I enjoy building scalable web applications and solving real-world problems through technology. With a strong foundation in both frontend and backend development, I strive to create seamless user experiences and robust systems.
+          </p>
+          <p>
+            In my free time, I love exploring new technologies 🌟, contributing to open-source projects 🤝, and staying updated with the latest trends in software development 📚.
+          </p>
+        </div>
+      </section>
+      
+      <style>
+        /* General Styles */
+        #about {
+          padding: 60px 0;
+          text-align: center;
+          color: #333;
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Enhanced About Me Title Styling */
+        .about-title {
+          font-family: 'Poppins', sans-serif; /* Modern Font */
+          font-size: 2.5rem; /* Slightly Larger Font Size */
+          font-weight: 700; /* Bold Weight */
+          color: #222; /* Dark Color */
+          letter-spacing: 2px; /* Spacing Between Letters */
+          text-transform: uppercase; /* Uppercase Text */
+          margin-bottom: 30px; /* More Spacing Below Title */
+          position: relative; /* For Adding Decorative Elements */
+          transition: all 0.3s ease; /* Smooth Transition */
+          cursor: pointer; /* Pointer Cursor on Hover */
+          animation: slideUp 1.5s ease-in-out;
+        }
+      
+        /* Hover Effect for About Me Title */
+        .about-title:hover {
+          transform: scale(1.1); /* Slightly Enlarge */
+          letter-spacing: 4px; /* Increase Letter Spacing */
+        }
+      
+        /* Underline Effect for Title */
+        .about-title::after {
+          content: '';
+          display: block;
+          width: 80px;
+          height: 3px;
+          background-color: #ff6f61; /* Vibrant Color */
+          margin: 10px auto 0; /* Centered Below Title */
+          border-radius: 5px; /* Rounded Edges */
+          transition: width 0.3s ease; /* Smooth Transition */
+        }
+      
+        .about-title:hover::after {
+          width: 120px; /* Extend Underline on Hover */
+        }
+      
+        /* Paragraph Styling */
+        #about p {
+          font-size: 1rem;
+          color: #666;
+          line-height: 1.8;
+          margin-bottom: 15px;
+          text-align: justify;
+          transition: all 0.3s ease; /* Smooth Transition */
+        }
+      
+        /* Highlighted Keywords */
+        .highlight {
+          color: #ff6f61; /* Vibrant color for keywords */
+          font-weight: bold;
+          transition: color 0.3s ease;
+        }
+      
+        .highlight:hover {
+          color: #e53935; /* Slightly darker on hover */
+          transform: scale(1.1); /* Slightly Enlarge */
+        }
+      
+        /* Icons for Interests */
+        #about p span {
+          font-size: 1.2rem;
+          margin-left: 5px;
+          transition: transform 0.3s ease;
+        }
+      
+        #about p span:hover {
+          transform: scale(1.5); /* Enlarge icons on hover */
+        }
+      
+        /* Animations */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      
+        /* Animation for Underline */
+        @keyframes underlineGrow {
+          from {
+            width: 0;
+          }
+          to {
+            width: 80px;
+          }
+        }
+      </style>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+          <!-- Enhanced Education Title -->
+          <h2 class="education-title">EDUCATIONAL QUALIFICATION</h2>
+          <div class="education-content">
+            <h3>Bachelor of Technology in Electrical and Electronics Engineering</h3>
+            <p>Chadalawada Ramanamma Engineering College, Tirupati, Andhra Pradesh</p>
+            <p class="cgpa">CGPA: 8.96 | 2020 – 2024</p>
+          </div>
+        </div>
+      </section>
+      
+      <style>
+        /* General Styles */
+        #education {
+          padding: 60px 0;
+          text-align: center;
+          color: #333;
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Enhanced Education Title Styling */
+        .education-title {
+          font-family: 'Poppins', sans-serif; /* Modern Font */
+          font-size: 2.5rem; /* Larger Font Size */
+          font-weight: 700; /* Bold Weight */
+          color: #222; /* Dark Color */
+          letter-spacing: 2px; /* Spacing Between Letters */
+          text-transform: uppercase; /* Uppercase Text */
+          margin-bottom: 30px; /* More Spacing Below Title */
+          position: relative; /* For Adding Decorative Elements */
+          cursor: pointer; /* Pointer Cursor on Hover */
+          transition: all 0.3s ease; /* Smooth Transition */
+          animation: slideUp 1.5s ease-in-out;
+        }
+      
+        /* Hover Effect for Education Title */
+        .education-title:hover {
+          transform: scale(1.1); /* Slightly Enlarge */
+          letter-spacing: 4px; /* Increase Letter Spacing */
+        }
+      
+        /* Underline Effect for Title */
+        .education-title::after {
+          content: '';
+          display: block;
+          width: 100px;
+          height: 3px;
+          background-color: #ff6f61; /* Vibrant Color */
+          margin: 10px auto 0; /* Centered Below Title */
+          border-radius: 5px; /* Rounded Edges */
+          transition: width 0.3s ease; /* Smooth Transition */
+        }
+      
+        .education-title:hover::after {
+          width: 150px; /* Extend Underline on Hover */
+        }
+      
+        /* Education Content Styling */
+        .education-content h3 {
+          font-family: 'Roboto', sans-serif; /* Clean Font */
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #333; /* Dark Color */
+          margin-bottom: 10px;
+          transition: all 0.3s ease; /* Smooth Transition */
+        }
+      
+        .education-content h3:hover {
+          color: #ff6f61; /* Vibrant Color on Hover */
+          transform: scale(1.05); /* Slightly Enlarge */
+        }
+      
+        .education-content p {
+          font-family: 'Roboto', sans-serif; /* Clean Font */
+          font-size: 1rem;
+          color: #555; /* Lighter Color */
+          line-height: 1.8;
+          margin-bottom: 10px;
+          transition: all 0.3s ease; /* Smooth Transition */
+        }
+      
+        .education-content p:hover {
+          color: #ff6f61; /* Vibrant Color on Hover */
+        }
+      
+        /* CGPA Styling */
+        .cgpa {
+          font-weight: 600;
+          color: #222; /* Dark Color */
+          transition: all 0.3s ease; /* Smooth Transition */
+        }
+      
+        .cgpa:hover {
+          color: #e53935; /* Slightly Darker on Hover */
+          transform: scale(1.05); /* Slightly Enlarge */
+        }
+      
+        /* Animations */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      </style>
+
+    <!-- Certifications Section -->
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+          <!-- Enhanced Certifications Title -->
+          <h2 class="certifications-title">CERTIFICATIONS</h2>
+          <ul class="certifications-list">
+            <!-- Each certification has a data-cert attribute pointing to its certificate URL -->
+            <li class="cert-item" data-cert="https://example.com/tap-academy-cert">
+              TAP ACADEMY FULL-STACK JAVA DEVELOPER CERTIFICATE
+            </li>
+            <li class="cert-item" data-cert="https://example.com/udemy-html-css-cert">
+              UDEMY CERTIFICATION IN HTML AND CSS
+            </li>
+            <li class="cert-item" data-cert="https://example.com/nptel-iot-cert">
+              CERTIFICATE FROM NPTEL ON “INTRODUCTION TO INDUSTRY 4.0 AND INDUSTRIAL INTERNET OF THINGS”
+            </li>
+            <li class="cert-item" data-cert="https://example.com/nptel-big-data-cert">
+              CERTIFICATE FROM NPTEL ON “BIG DATA COMPUTING”
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Modal for Certificates -->
+      <div class="modal" id="certificateModal">
+        <div class="modal-content">
+          <span class="close-modal" id="closeModal">&times;</span>
+          <img id="certificateImage" src="" alt="Certificate">
+        </div>
+      </div>
+      
+      <style>
+        /* General Styles */
+        #certifications {
+          padding: 60px 0;
+          text-align: center;
+          color: #333;
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Enhanced Certifications Title Styling */
+        .certifications-title {
+          font-family: 'Poppins', sans-serif; /* Modern Font */
+          font-size: 2.5rem; /* Larger Font Size */
+          font-weight: 700; /* Bold Weight */
+          color: #222; /* Dark Color */
+          letter-spacing: 2px; /* Spacing Between Letters */
+          text-transform: uppercase; /* Uppercase Text */
+          margin-bottom: 30px; /* More Spacing Below Title */
+          position: relative; /* For Adding Decorative Elements */
+          cursor: pointer; /* Pointer Cursor on Hover */
+          transition: all 0.3s ease; /* Smooth Transition */
+          animation: slideUp 1.5s ease-in-out;
+        }
+      
+        /* Hover Effect for Certifications Title */
+        .certifications-title:hover {
+          transform: scale(1.1); /* Slightly Enlarge */
+          letter-spacing: 4px; /* Increase Letter Spacing */
+        }
+      
+        /* Underline Effect for Title */
+        .certifications-title::after {
+          content: '';
+          display: block;
+          width: 100px;
+          height: 3px;
+          background-color: #000; /* Black Underline */
+          margin: 10px auto 0; /* Centered Below Title */
+          border-radius: 5px; /* Rounded Edges */
+          transition: width 0.3s ease; /* Smooth Transition */
+        }
+      
+        .certifications-title:hover::after {
+          width: 150px; /* Extend Underline on Hover */
+        }
+      
+        /* Certifications List Styling */
+        .certifications-list {
+          list-style: none;
+          padding: 0;
+        }
+      
+        .cert-item {
+          background: #e0e0e0; /* Light gray background */
+          padding: 15px;
+          margin-bottom: 10px;
+          border-radius: 8px;
+          font-size: 1rem;
+          color: #333; /* Dark gray text */
+          text-transform: uppercase; /* Uppercase Certification Names */
+          font-family: 'Roboto', sans-serif; /* Clean Font */
+          transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, filter 0.5s ease;
+          cursor: pointer;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          position: relative; /* For Mouse Move Effect */
+          overflow: hidden; /* Ensure overlay doesn't overflow */
+          filter: grayscale(100%); /* Start in Grayscale */
+        }
+      
+        /* Hover Effects for Certifications */
+        .cert-item:hover {
+          transform: translateY(-5px); /* Move up slightly on hover */
+          background: #000; /* Black Background on Hover */
+          color: #fff; /* White Text on Hover */
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          filter: grayscale(0%); /* Remove Grayscale on Hover */
+        }
+      
+        /* Animation on Mouse Movement */
+        .cert-item::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%; /* Start off-screen */
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.2); /* Subtle Overlay */
+          transition: transform 0.5s ease;
+          transform: skewX(-25deg); /* Skew effect for dynamic look */
+        }
+      
+        .cert-item:hover::before {
+          transform: translateX(200%) skewX(-25deg); /* Animate overlay from left to right */
+        }
+      
+        /* Modal Styles */
+        .modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+        }
+      
+        .modal-content {
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          text-align: center;
+          max-width: 600px;
+        }
+      
+        .modal-content img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+      
+        .close-modal {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: transparent;
+          border: none;
+          font-size: 1.5rem;
+          color: #fff;
+          cursor: pointer;
+        }
+      
+        /* Animations */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      </style>
+      
+      <script>
+        // JavaScript for Modal Functionality
+        const modal = document.getElementById('certificateModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const certificateImage = document.getElementById('certificateImage');
+      
+        // Open Modal and Load Certificate Image
+        document.querySelectorAll('.cert-item').forEach(cert => {
+          cert.addEventListener('click', () => {
+            const certUrl = cert.getAttribute('data-cert'); // Get certificate URL from data-cert attribute
+            if (certUrl) {
+              certificateImage.src = certUrl; // Set the image source
+              modal.style.display = 'flex'; // Show the modal
+            }
+          });
+        });
+      
+        // Close Modal
+        closeModalBtn.addEventListener('click', () => {
+          modal.style.display = 'none'; // Hide the modal
+        });
+      
+        // Close Modal When Clicking Outside
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            modal.style.display = 'none'; // Hide the modal
+          }
+        });
+      </script>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+          <!-- Enhanced Projects Title -->
+          <h2 class="projects-title">PROJECTS</h2>
+          <div class="project-grid">
+            <!-- Project Card 1 -->
+            <div class="project-card">
+              <h3>PERSONAL PORTFOLIO WEBSITE</h3>
+              <p>Built a responsive portfolio website using HTML, CSS, and JavaScript. Designed to showcase technical skills effectively.</p>
+            </div>
+            <!-- Project Card 2 -->
+            <div class="project-card">
+              <h3>HEALTHCARE MANAGEMENT SYSTEM</h3>
+              <p>Developed a machine learning-based system for personalized health score tracking. Provided actionable insights for users.</p>
+            </div>
+            <!-- Project Card 3 -->
+            <div class="project-card">
+              <h3>SOLAR TRACKING SYSTEM</h3>
+              <p>Built an Arduino-based solar tracking system with IoT integration. Optimized energy efficiency using real-time data.</p>
+            </div>
+            <!-- Project Card 4 -->
+            <div class="project-card">
+              <h3>DISTANCE MEASUREMENT USING ULTRASONIC SENSOR</h3>
+              <p>Integrated an ultrasonic sensor with an OLED display on Arduino Uno. Displayed real-time distance measurements for instant feedback.</p>
+            </div>
+            <!-- Project Card 5 -->
+            <div class="project-card">
+              <h3>SMART AUTOMATION SYSTEM WITH NODEMCU ESP8266</h3>
+              <p>Designed a home automation system with lighting, appliance control, and security features. Enabled remote monitoring via IoT.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <style>
+        /* General Styles */
+        #projects {
+          padding: 80px 20px;
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          color: #333;
+          text-align: center;
+          animation: fadeIn 2s ease-in-out;
+        }
+      
+        /* Enhanced Projects Title Styling */
+        .projects-title {
+          font-family: 'Poppins', sans-serif; /* Modern Font */
+          font-size: 2.5rem; /* Larger Font Size */
+          font-weight: 700; /* Bold Weight */
+          color: #222; /* Dark Color */
+          letter-spacing: 2px; /* Spacing Between Letters */
+          text-transform: uppercase; /* Uppercase Text */
+          margin-bottom: 40px; /* More Spacing Below Title */
+          position: relative; /* For Adding Decorative Elements */
+          cursor: pointer; /* Pointer Cursor on Hover */
+          transition: all 0.3s ease; /* Smooth Transition */
+          animation: slideUp 1.5s ease-in-out;
+        }
+      
+        /* Underline Effect for Title */
+        .projects-title::after {
+          content: '';
+          display: block;
+          width: 120px;
+          height: 4px;
+          background-color: #000; /* Black Underline */
+          margin: 10px auto 0; /* Centered Below Title */
+          border-radius: 5px; /* Rounded Edges */
+          transition: width 0.3s ease; /* Smooth Transition */
+        }
+      
+        .projects-title:hover::after {
+          width: 150px; /* Extend Underline on Hover */
+        }
+      
+        /* Project Grid Styling */
+        .project-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Layout */
+          gap: 30px; /* Space Between Cards */
+        }
+      
+        /* Project Card Styling */
+        .project-card {
+          background: #fff; /* White Background */
+          padding: 20px;
+          border-radius: 10px; /* Rounded Corners */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle Shadow */
+          transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Smooth Transition */
+          cursor: pointer; /* Pointer Cursor on Hover */
+          overflow: hidden; /* Ensure Content Stays Within Bounds */
+          position: relative; /* For Overlay Effects */
+        }
+      
+        /* Hover Effect for Project Cards */
+        .project-card:hover {
+          transform: translateY(-10px); /* Slightly Move Up */
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger Shadow */
+          background: #f9f9f9; /* Light Gray Background on Hover */
+        }
+      
+        /* Project Title Styling */
+        .project-card h3 {
+          font-family: 'Roboto', sans-serif; /* Clean Font */
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #222; /* Dark Color */
+          text-transform: uppercase; /* Uppercase Titles */
+          margin-bottom: 10px;
+          transition: color 0.3s ease, letter-spacing 0.3s ease; /* Smooth Transition */
+        }
+      
+        /* Hover Effect for Project Titles */
+        .project-card:hover h3 {
+          color: #000; /* Black Color on Hover */
+          letter-spacing: 3px; /* Increase Letter Spacing */
+        }
+      
+        /* Project Description Styling */
+        .project-card p {
+          font-family: 'Roboto', sans-serif; /* Clean Font */
+          font-size: 1rem;
+          color: #555; /* Lighter Color */
+          line-height: 1.6; /* Improved Readability */
+          transition: color 0.3s ease; /* Smooth Transition */
+        }
+      
+        /* Hover Effect for Project Descriptions */
+        .project-card:hover p {
+          color: #333; /* Darker Color on Hover */
+        }
+      
+        /* Animation for Fade-In Effect */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      
+        /* Animation for Slide-Up Effect */
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      </style>
+
+    <!-- Skills Section -->
+    <!-- Skills Section -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Skills with Wide Cloud Tooltips</title>
+      <style>
+        /* General Styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: 'Poppins', sans-serif;
+          line-height: 1.6;
+          background: #f5f5f5;
+          color: #333;
+          overflow-x: hidden;
+        }
+        .container {
+          width: 80%;
+          margin: auto;
+          max-width: 1200px;
+        }
+    
+        /* Skills Section */
+        #skills {
+          padding: 80px 20px;
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          text-align: center;
+        }
+    
+        /* Enhanced Skills Title Styling */
+        .skills-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #222;
+          text-transform: uppercase;
+          margin-bottom: 40px;
+        }
+    
+        /* Skills Grid Styling */
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 20px;
+        }
+    
+        /* Skill Item Styling */
+        .skill-item {
+          background: #e0e0e0;
+          padding: 15px;
+          text-align: center;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #333;
+          transition: transform 0.3s ease, background 0.3s ease;
+          cursor: pointer;
+          position: relative; /* For Tooltip */
+        }
+    
+        .skill-item:hover {
+          transform: scale(1.1);
+          background: #000;
+          color: #fff;
+        }
+    
+        /* Tooltip Styling */
+        .skill-item[data-tooltip]::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          bottom: 120%; /* Position Tooltip Above Skill */
+          left: 50%;
+          transform: translateX(-50%) translateY(10px); /* Start Slightly Below */
+          background: #222; /* Dark Background */
+          color: #fff; /* White Text */
+          padding: 15px 20px; /* Increased Padding for Wider Tooltip */
+          border-radius: 30px; /* Rounded Corners for Wide Cloud Shape */
+          font-size: 0.9rem;
+          white-space: normal; /* Allow Line Breaks */
+          max-width: 400px; /* Wider Tooltip Width */
+          z-index: 10;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle Shadow */
+        }
+    
+        /* Cloud Tail (Speech Bubble Effect) */
+        .skill-item[data-tooltip]::before {
+          content: '';
+          position: absolute;
+          bottom: 105%; /* Position Tail Below Tooltip */
+          left: 50%;
+          transform: translateX(-50%);
+          width: 20px; /* Wider Tail */
+          height: 20px; /* Wider Tail */
+          background: #222; /* Match Tooltip Background */
+          clip-path: polygon(50% 100%, 0 0, 100% 0); /* Triangle Shape */
+          z-index: 9;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+    
+        /* Show Tooltip and Tail on Hover */
+        .skill-item[data-tooltip]:hover::after,
+        .skill-item[data-tooltip]:hover::before {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0); /* Slide Up Animation */
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Skills Section -->
+      <section id="skills">
+        <div class="container">
+          <h2 class="skills-title">SKILLS</h2>
+          <div class="skills-grid">
+            <!-- Skill Items with Tooltips -->
+            <div class="skill-item" data-tooltip="Object-Oriented Programming (OOP), Collections, and Exception Handling.<br>Multithreading, JDBC, and Streams API.<br>JVM, JDK, and Performance Optimization.">Java</div>
+            <div class="skill-item" data-tooltip="Java Fundamentals: Data types, Operators, Control Statements.<br>Advanced Concepts: Generics, Lambda Expressions.<br>File Handling, Serialization, and Reflection API.">Core Java</div>
+            <div class="skill-item" data-tooltip="Microservices architecture, REST APIs, Dependency Injection.<br>Spring Security, Spring Data JPA, Hibernate ORM.<br>Auto-configuration, Actuators, and DevTools.">Spring Boot</div>
+            <div class="skill-item" data-tooltip="Components, Directives, and Services for dynamic UI.<br>RxJS, Observables, and State Management (NgRx).<br>Routing, Lazy Loading, and Performance Optimization.">Angular</div>
+            <div class="skill-item" data-tooltip="Semantic HTML for accessibility and SEO-friendly webpages.<br>CSS Flexbox, Grid, and Media Queries for responsive design.<br>CSS Preprocessors (SASS, LESS) and Animations.">HTML & CSS</div>
+            <div class="skill-item" data-tooltip="ES6+ features: Arrow functions, Promises, Async/Await.<br>DOM Manipulation, Event Handling, and Browser APIs.<br>Frameworks (React, Angular), Fetch API, and Local Storage.">JavaScript</div>
+            <div class="skill-item" data-tooltip="SQL Queries: CRUD Operations, Joins, and Indexing.<br>Stored Procedures, Triggers, and Transactions.<br>Performance Tuning, Query Optimization, and Replication.">MySQL</div>
+            <div class="skill-item" data-tooltip="NoSQL Basics: Documents, Collections, and Indexing.<br>Aggregation Framework, Schema Design, and Data Modeling.<br>Replication, Sharding, and Performance Optimization.">MongoDB</div>
+            <div class="skill-item" data-tooltip="Container Orchestration, Deployments, and Scaling.<br>Pod Management, Networking, and Service Discovery.<br>Helm Charts, ConfigMaps, and Secrets for DevOps.">Kubernetes</div>
+            <div class="skill-item" data-tooltip="Version Control Basics: Cloning, Branching, Merging.<br>Git Workflows: GitFlow, Pull Requests, and Code Reviews.<br>Handling Conflicts, Stashing, and Remote Repository Management.">Git</div>
+            <div class="skill-item" data-tooltip="Containerization Concepts, Docker Images, and Compose.<br>Networking, Volumes, and Persistent Storage.<br>Container Security, Multi-Stage Builds, and CI/CD Integration.">Docker</div>
+            <div class="skill-item" data-tooltip="Core Concepts: Variables, Loops, Functions, and Data Structures.<br>Libraries & Frameworks: NumPy, Pandas, Flask, and Django.<br>Web Scraping, Automation, and Machine Learning.">Python</div>
+          </div>
+        </div>
+      </section>
+    </body>
+    </html>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Arem Satish Kumar Reddy. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/aremteja/" target="_blank">LinkedIn</a>
+        <a href="mailto:aremsatishkumarreddy@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // DOM Elements
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('main');
+
+    // Open Sidebar
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      main.classList.add('active');
+    });
+
+    // Close Sidebar
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      main.classList.remove('active');
+    });
+
+    // Close Sidebar When Clicking Outside
+    document.addEventListener('click', (event) => {
+      if (
+        !sidebar.contains(event.target) &&
+        !menuBtn.contains(event.target)
+      ) {
+        sidebar.classList.remove('active');
+        main.classList.remove('active');
+      }
+    });
+
+    // Smooth Scrolling for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+          sidebar.classList.remove('active');
+          main.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
